@@ -1,4 +1,4 @@
-# ex-proj-psd
+# Tetris-Vue
 
 ## Project setup
 ```
