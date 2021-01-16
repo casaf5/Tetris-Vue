@@ -1,5 +1,6 @@
 <template>
 	<div class="next-pieces-board">
+		<img src="../assets/images/L.svg" alt="" />
 		<header>NEXT</header>
 		<table class="next-board">
 			<tr>

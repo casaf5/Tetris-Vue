@@ -1,7 +1,7 @@
 <template>
 	<div class="tetris-game flex-center">
 		<GameBoard />
-		<!-- <NextPiecesBoard /> -->
+		<NextPiecesBoard />
 	</div>
 </template>
 
