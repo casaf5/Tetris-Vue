@@ -1,0 +1,9 @@
+.tetris-game {
+	background: #0f0c29; /* fallback for old browsers */
+	background-image: url('../assets/images/tetris-bg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	grid-column: 1/4;
+	grid-row: 2/3;
+}

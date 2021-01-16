@@ -1,0 +1,83 @@
+header {
+	background-image: url('../assets/images/tetris-bg.jpg');
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+	width: 100%;
+	grid-column: 1/4;
+	grid-row: 1/2;
+}
+.site-header-wrapper {
+	.logo {
+		color: white;
+		.logo-img {
+			width: 50px;
+			margin-right: 10px;
+		}
+	}
+	.hamburger {
+		width: 35px;
+		height: 5px;
+		background-color: black;
+		position: relative;
+		display: none;
+		z-index: 10;
+		&::after,
+		&::before {
+			content: '';
+			position: absolute;
+			background-color: black;
+			width: 35px;
+			height: 5px;
+			margin-top: 10px;
+		}
+		&::before {
+			margin-top: -10px;
+		}
+	}
+	.nav-links {
+		color: black;
+		li:not(:last-child) {
+			margin-right: 10px;
+		}
+	}
+}
+
+@media (max-width: 720px) {
+	.site-header-wrapper {
+		position: relative;
+		.hamburger {
+			display: block;
+			cursor: pointer;
+		}
+
+		.nav-links {
+			position: fixed;
+			bottom: -85px;
+			left: 0;
+			background-color: darken($clr1, 5%);
+			width: 100vw;
+			height: 100vh;
+			z-index: 1;
+			flex-direction: column;
+			justify-content: flex-start;
+			transition: 0.5s ease-in-out;
+			transform: translateX(100%);
+
+			li {
+				width: 100%;
+				margin: 0 !important;
+				padding: 20px 0;
+				text-align: center;
+				cursor: pointer;
+				transition: 0.3s ease;
+				&:hover {
+					transform: scale(1.1);
+				}
+			}
+			&.open {
+				transform: translateX(0);
+			}
+		}
+	}
+}

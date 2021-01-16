@@ -1,0 +1,17 @@
+.base-select {
+	width: 100%;
+	position: relative;
+	label {
+		font-size: rem(12px);
+	}
+	select {
+		width: 100%;
+		min-width: 350px;
+		margin: 5px 0;
+		padding: 10px;
+		border-radius: 5px;
+		outline: none;
+		border: 1px solid black;
+		font-family: Poppins;
+	}
+}

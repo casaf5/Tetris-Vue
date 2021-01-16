@@ -1,0 +1,23 @@
+//MAIN-LAYOUT-HELPERS
+
+.site-main-layout {
+	display: grid;
+	grid-template-columns: 2rem auto 2rem;
+	grid-template-rows: 10% auto 4%;
+	height: 100%;
+	width: 100%;
+}
+
+.pos-main-container {
+	grid-column: 2/3;
+	grid-row: 2/3;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: 2rem auto 2rem;
+	grid-template-rows: 1fr;
+}
+
+.grid-pos-center {
+	grid-column: 2/3;
+}
