@@ -13,6 +13,9 @@ export default new Vuex.Store({
 		nextShape(state) {
 			return state.nextShape
 		},
+		nextPieces(state) {
+			return state.nextPieces
+		},
 	},
 	mutations: {
 		initPieces(state) {
@@ -24,7 +27,7 @@ export default new Vuex.Store({
 			state.nextShape = state.nextPieces.shift()
 		},
 		addPiece(state) {
-			let randIdx = Math.floor(Math.random() * 6)
+			let randIdx = Math.floor(Math.random() * 4)
 			let shape = state.piecesTypes[randIdx]
 			state.piecesTypes.splice(randIdx, 1)
 			state.piecesTypes.push(shape)

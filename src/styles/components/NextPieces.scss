@@ -1,0 +1,23 @@
+.next-pieces {
+	width: 150px;
+	height: 360px;
+	padding: 15px;
+	margin: 10px;
+	border-radius: 10px;
+	border: 5px solid lightslategrey;
+	background-color: black;
+	position: relative;
+	.title {
+		color: white;
+		position: absolute;
+		top: 5px;
+		height: 20px;
+	}
+	.pieces img {
+		margin-top: 18px;
+		// margin-bottom: 5px;
+		// &:last-child {
+		// 	margin-bottom: 0;
+		// }
+	}
+}
