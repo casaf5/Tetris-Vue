@@ -6,7 +6,8 @@ export const piecesModule = {
 	},
 	getters: {
 		nextShape(state) {
-			return state.nextPieces.shift()
+			let nextPiece = state.nextPieces.splice(0, 1)[0]
+			return nextPiece
 		},
 		nextPieces(state) {
 			return state.nextPieces

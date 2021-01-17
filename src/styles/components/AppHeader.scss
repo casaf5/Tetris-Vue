@@ -11,7 +11,7 @@ header {
 	.logo {
 		color: white;
 		.logo-img {
-			width: 50px;
+			width: 100px;
 			margin-right: 10px;
 		}
 	}
@@ -36,7 +36,14 @@ header {
 		}
 	}
 	.nav-links {
-		color: black;
+		color: white;
+		.play-btn {
+			background-color: #f89622;
+			padding: 10px 20px;
+			border-radius: 10px;
+			letter-spacing: 1.3px;
+			text-transform: uppercase;
+		}
 		li:not(:last-child) {
 			margin-right: 10px;
 		}

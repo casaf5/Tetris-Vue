@@ -18,7 +18,9 @@
 const ROWS = 20
 const COLUMS = 10
 import { pieces } from '../pieces.js'
+import { sounds } from '../sounds.js'
 import GameOverScreen from '@/components/GameOverScreen.vue'
+
 export default {
 	name: 'GameBoard',
 	components: {
@@ -101,6 +103,7 @@ export default {
 			if (shapeCoords.some(([i, j]) => i + 1 === ROWS || this.board[i + 1][j].isBlocked)) {
 				this.$store.commit('addPiece')
 				this.addNewPiece()
+				sounds.BLOCK_HIT.play()
 			}
 		},
 		keyPress({ key }) {
@@ -157,6 +160,7 @@ export default {
 			let newShapeCoords = this.rotateOptions[angle](center.i, center.j)
 			newShapeCoords = this.validCoords(newShapeCoords) || shapeCoords
 			this.renderCoords(newShapeCoords)
+			sounds.BLOCK_ROTATE.play()
 			this.currPiece = { ...this.currPiece, angle, shapeCoords: newShapeCoords }
 			this.reflectLocation()
 		},
@@ -180,6 +184,8 @@ export default {
 					lines++
 				}
 			})
+			if (lines > 0) sounds.LINE_REMOVE.play()
+			else if (lines === 4) sounds.LINE_REMOVAL_4.play()
 			this.$store.commit('scoreModule/updateScore', lines)
 		},
 		removeRow(rowIdx) {
@@ -218,7 +224,8 @@ export default {
 	created() {
 		this.board = this.createBoard()
 		this.addNewPiece()
-		// this.gameInterval  = setInterval(this.moveDown, 900)
+		this.gameInterval = setInterval(this.moveDown, 900)
+		sounds.MAIN_THEME.play()
 		window.addEventListener('keydown', this.keyPress)
 	},
 }
