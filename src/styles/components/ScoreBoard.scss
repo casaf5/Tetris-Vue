@@ -1,0 +1,26 @@
+.score-board {
+	width: 150px;
+	height: 360px;
+	padding: 15px;
+	margin: 10px;
+	border-radius: 10px;
+	border: 5px solid lightslategrey;
+	background-color: black;
+	position: relative;
+	.title {
+		color: #ffed00;
+		margin: 10px;
+		font-size: 1.2rem;
+	}
+	h1 {
+		width: 90%;
+		border: 2px solid white;
+		border-radius: 10px;
+		height: 45px;
+		color: white;
+		margin: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

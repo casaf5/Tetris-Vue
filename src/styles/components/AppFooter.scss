@@ -3,6 +3,10 @@ footer {
 	grid-column: 1/4;
 	grid-row: 3/4;
 	background-color: black;
+	background-image: url('../assets/images/tetris-bg.jpg');
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 .site-footer-wrapper {
@@ -10,13 +14,13 @@ footer {
 	align-self: center;
 	width: 100%;
 	max-width: 500px;
-	border-top: 1px solid black;
+	border-top: 2px solid black;
 	.social-nav {
 		.icon {
 			padding: 7px 10px;
 			transition: 0.2s ease;
 			cursor: pointer;
-			color: white;
+			font-size: 1.3rem;
 		}
 		.icon:hover {
 			&.facebook {

@@ -92,12 +92,12 @@ export default {
 			this.currPiece.shapeCoords = shapeCoords.map(([i, j]) => [i + rowDiff, j + colDiff])
 			this.currPiece.center = { i: center.i + rowDiff, j: center.j + colDiff }
 			this.renderCoords(this.currPiece.shapeCoords)
-			this.checkFullRowsBlocks()
 			this.reflectLocation()
 			setTimeout(this.checkPieceCantMove, 500)
 		},
 		checkPieceCantMove() {
 			let { shapeCoords } = this.currPiece
+			this.checkFullRowsBlocks()
 			if (shapeCoords.some(([i, j]) => i + 1 === ROWS || this.board[i + 1][j].isBlocked)) {
 				this.$store.commit('addPiece')
 				this.addNewPiece()
@@ -139,15 +139,14 @@ export default {
 			this.currPiece.shapeCoords.forEach(([i, j]) => {
 				this.board[i][j] = { isMoving: false, isBlocked: true, color: this.shapeColor }
 			})
-			console.log('next', this.nextShape)
 			this.rotateOptions = pieces[this.nextShape]
-			let shapeCoords = this.rotateOptions[1](0, 5)
+			let shapeCoords = this.rotateOptions[1](1, 4)
 			if (this.checkGameOver(shapeCoords)) {
 				clearInterval(this.gameInterval)
 				this.isGameOver = true
 				return
 			}
-			this.currPiece = { shapeCoords, angle: 1, center: { i: 0, j: 5 }, shape: this.nextShape }
+			this.currPiece = { shapeCoords, angle: 1, center: { i: 1, j: 4 }, shape: this.nextShape }
 			this.renderCoords(shapeCoords)
 			this.reflectLocation()
 		},
@@ -174,12 +173,18 @@ export default {
 			})
 		},
 		checkFullRowsBlocks() {
+			let lines = 0
 			this.board.forEach((row, rowIdx) => {
-				if (row.every((cell) => cell.isBlocked)) this.removeRow(rowIdx)
+				if (row.every((cell) => cell.isBlocked)) {
+					this.removeRow(rowIdx)
+					lines++
+				}
 			})
+			this.$store.commit('scoreModule/updateScore', lines)
 		},
 		removeRow(rowIdx) {
 			for (let i = rowIdx; i > 0; i--) {
+				if (this.board[i].every((cell) => !cell.isBlocked)) break
 				let tempRow = JSON.parse(JSON.stringify(this.board[i - 1]))
 				this.board.splice(i, 1, tempRow)
 			}
@@ -213,7 +218,7 @@ export default {
 	created() {
 		this.board = this.createBoard()
 		this.addNewPiece()
-		this.gameInterval = setInterval(this.moveDown, 900)
+		// this.gameInterval  = setInterval(this.moveDown, 900)
 		window.addEventListener('keydown', this.keyPress)
 	},
 }

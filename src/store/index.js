@@ -1,40 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { piecesModule } from './modules/Pieces'
+import { scoreModule } from './modules/Score'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	state: {
-		nextShape: null,
-		nextPieces: [],
-		piecesTypes: ['O', 'L', 'J', 'Z', 'S', 'I', 'T'],
-	},
-	getters: {
-		nextShape(state) {
-			return state.nextShape
-		},
-		nextPieces(state) {
-			return state.nextPieces
-		},
-	},
-	mutations: {
-		initPieces(state) {
-			let pieces = [...state.piecesTypes]
-			state.nextPieces = Array.from({ length: 4 }, () => {
-				let idx = Math.floor(Math.random() * pieces.length)
-				return pieces.splice(idx, 1)[0]
-			})
-			state.nextShape = state.nextPieces.shift()
-		},
-		addPiece(state) {
-			let randIdx = Math.floor(Math.random() * 4)
-			let shape = state.piecesTypes[randIdx]
-			state.piecesTypes.splice(randIdx, 1)
-			state.piecesTypes.push(shape)
-			state.nextPieces.push(shape)
-			state.nextShape = state.nextPieces.shift()
-		},
-	},
+	state: {},
+	getters: {},
+	mutations: {},
 	actions: {},
-	modules: {},
+	modules: {
+		piecesModule,
+		scoreModule,
+	},
 })
