@@ -146,7 +146,14 @@ export default {
 			let shapeCoords = this.rotateOptions[1](1, 4)
 			if (this.checkGameOver(shapeCoords)) {
 				clearInterval(this.gameInterval)
+				shapeCoords.forEach(([i, j]) => {
+					if (!this.board[i + 1][j].isBlocked) {
+						this.board[i + 1][j].isBlocked = true
+						this.board[i][j].color = this.shapeColor
+					}
+				})
 				this.isGameOver = true
+				sounds.GAME_OVER.play()
 				return
 			}
 			this.currPiece = { shapeCoords, angle: 1, center: { i: 1, j: 4 }, shape: this.nextShape }
@@ -225,7 +232,7 @@ export default {
 		this.board = this.createBoard()
 		this.addNewPiece()
 		this.gameInterval = setInterval(this.moveDown, 900)
-		sounds.MAIN_THEME.play()
+		// sounds.MAIN_THEME.play()
 		window.addEventListener('keydown', this.keyPress)
 	},
 }
